@@ -229,6 +229,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _main_main_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./main/main.component */ "./src/app/main/main.component.ts");
 /* harmony import */ var _services_before_login_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./_services/before-login.service */ "./src/app/_services/before-login.service.ts");
 /* harmony import */ var _services_after_login_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./_services/after-login.service */ "./src/app/_services/after-login.service.ts");
+/* harmony import */ var _profile_profile_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./profile/profile.component */ "./src/app/profile/profile.component.ts");
+
 
 
 
@@ -257,6 +259,11 @@ var routes = [
     {
         path: 'auth/sign-up',
         component: _auth_register_register_component__WEBPACK_IMPORTED_MODULE_6__["RegisterComponent"],
+    },
+    {
+        path: 'profile',
+        component: _profile_profile_component__WEBPACK_IMPORTED_MODULE_10__["ProfileComponent"],
+        canActivate: [_services_after_login_service__WEBPACK_IMPORTED_MODULE_9__["AfterLoginService"]],
     },
     { path: '**', component: _error_error404_error404_component__WEBPACK_IMPORTED_MODULE_4__["Error404Component"] }
 ];
@@ -345,15 +352,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _incs_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./incs/navbar/navbar.component */ "./src/app/incs/navbar/navbar.component.ts");
-/* harmony import */ var _incs_footer_footer_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./incs/footer/footer.component */ "./src/app/incs/footer/footer.component.ts");
-/* harmony import */ var _auth_login_login_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./auth/login/login.component */ "./src/app/auth/login/login.component.ts");
-/* harmony import */ var _auth_register_register_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./auth/register/register.component */ "./src/app/auth/register/register.component.ts");
-/* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
-/* harmony import */ var _error_error404_error404_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./error/error404/error404.component */ "./src/app/error/error404/error404.component.ts");
-/* harmony import */ var _main_main_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./main/main.component */ "./src/app/main/main.component.ts");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _incs_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./incs/navbar/navbar.component */ "./src/app/incs/navbar/navbar.component.ts");
+/* harmony import */ var _incs_footer_footer_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./incs/footer/footer.component */ "./src/app/incs/footer/footer.component.ts");
+/* harmony import */ var _auth_login_login_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./auth/login/login.component */ "./src/app/auth/login/login.component.ts");
+/* harmony import */ var _auth_register_register_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./auth/register/register.component */ "./src/app/auth/register/register.component.ts");
+/* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
+/* harmony import */ var _error_error404_error404_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./error/error404/error404.component */ "./src/app/error/error404/error404.component.ts");
+/* harmony import */ var _main_main_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./main/main.component */ "./src/app/main/main.component.ts");
+/* harmony import */ var _profile_profile_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./profile/profile.component */ "./src/app/profile/profile.component.ts");
+/* harmony import */ var _incs_sidebar_sidebar_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./incs/sidebar/sidebar.component */ "./src/app/incs/sidebar/sidebar.component.ts");
+
+
+
 
 
 
@@ -374,23 +387,26 @@ var AppModule = /** @class */ (function () {
     AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"],
-                _incs_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_7__["NavbarComponent"],
-                _incs_footer_footer_component__WEBPACK_IMPORTED_MODULE_8__["FooterComponent"],
-                _auth_login_login_component__WEBPACK_IMPORTED_MODULE_9__["LoginComponent"],
-                _auth_register_register_component__WEBPACK_IMPORTED_MODULE_10__["RegisterComponent"],
-                _home_home_component__WEBPACK_IMPORTED_MODULE_11__["HomeComponent"],
-                _error_error404_error404_component__WEBPACK_IMPORTED_MODULE_12__["Error404Component"],
-                _main_main_component__WEBPACK_IMPORTED_MODULE_13__["MainComponent"]
+                _app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"],
+                _incs_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_8__["NavbarComponent"],
+                _incs_footer_footer_component__WEBPACK_IMPORTED_MODULE_9__["FooterComponent"],
+                _auth_login_login_component__WEBPACK_IMPORTED_MODULE_10__["LoginComponent"],
+                _auth_register_register_component__WEBPACK_IMPORTED_MODULE_11__["RegisterComponent"],
+                _home_home_component__WEBPACK_IMPORTED_MODULE_12__["HomeComponent"],
+                _error_error404_error404_component__WEBPACK_IMPORTED_MODULE_13__["Error404Component"],
+                _main_main_component__WEBPACK_IMPORTED_MODULE_14__["MainComponent"],
+                _profile_profile_component__WEBPACK_IMPORTED_MODULE_15__["ProfileComponent"],
+                _incs_sidebar_sidebar_component__WEBPACK_IMPORTED_MODULE_16__["SidebarComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_5__["AppRoutingModule"],
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_6__["AppRoutingModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
-                _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClientModule"]
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClientModule"],
+                _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__["NgbModule"]
             ],
             providers: [],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"]]
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
@@ -668,7 +684,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-navbar></app-navbar>\n\n<section>\n  Home page\n</section>\n\n"
+module.exports = "<app-navbar></app-navbar>\n\n<section>\n  Home page\n</section>\n\nLorem ipsum, dolor sit amet consectetur adipisicing elit. Repudiandae mollitia, suscipit dolore iusto nobis quasi placeat sunt voluptates eum maxime ipsam asperiores sequi modi voluptas excepturi odit quidem totam possimus?\nQuasi cupiditate tempora, necessitatibus illum tempore modi amet dolores totam autem aperiam suscipit earum provident, facere praesentium libero. Dolorum nobis labore praesentium nam? Veritatis autem perspiciatis explicabo voluptates voluptatum ipsa.\nNihil quaerat, cupiditate quas earum similique dicta sit officiis tenetur hic optio expedita recusandae doloremque fugit incidunt rem. Eaque similique maiores veniam repellendus ad repellat. Debitis consectetur pariatur quasi deleniti!\nMagnam non iusto vitae, illo repellat deserunt. Natus fuga, inventore quam ratione nobis minus fugiat deserunt ipsam ea alias dolorem perferendis ipsum, quas vero. Laboriosam error libero exercitationem consequuntur animi.\nAssumenda quasi ab eligendi! Recusandae voluptate expedita vel. Consectetur laborum similique ipsum explicabo et, cum laboriosam quos accusamus ipsa non facilis, enim qui eos? Quaerat odio reiciendis repudiandae sit illum.\nIure consequatur sit aut! Sit in quod reiciendis cumque perspiciatis accusamus saepe vero! Illo sint blanditiis explicabo, possimus voluptates, nulla inventore vitae necessitatibus obcaecati quam provident! Ipsum aut et incidunt?\nVeniam praesentium corrupti laboriosam. Dolores assumenda consequuntur cum eaque optio temporibus, eius excepturi, dolorem sapiente nesciunt adipisci, debitis inventore natus dignissimos reprehenderit officia ipsam magni maxime laudantium ipsa. Placeat, eveniet.\nVoluptas reprehenderit tempora ad eos distinctio tempore praesentium, a recusandae perferendis itaque? Id libero consequatur nesciunt praesentium debitis quas odio dolor mollitia numquam minima ducimus sequi, nemo fugit ut quaerat!\nFacilis modi, dolore itaque quos dolores cupiditate, quis eum quia dicta, voluptate obcaecati. Inventore doloribus quo accusamus modi provident voluptas laborum. Sequi excepturi laboriosam esse rem dolorem odit sed voluptas.\nIllum incidunt possimus asperiores cupiditate consequuntur iure. Asperiores at cum minima ipsam qui perspiciatis aut blanditiis provident laudantium cupiditate. Sapiente beatae voluptatem quasi velit porro quos molestias, placeat vel necessitatibus?\nQuae, ad voluptas. Alias tenetur officia, repudiandae sed nesciunt commodi voluptatem exercitationem culpa. Reprehenderit maxime, dolor perferendis repudiandae placeat, saepe quibusdam nesciunt maiores veritatis dolores modi aliquid, tempora ullam consequuntur!\nDistinctio reprehenderit velit dolor placeat? Vel necessitatibus libero cum eaque ab perferendis inventore voluptas quisquam eius ut deserunt, repudiandae facilis dignissimos labore officiis, delectus quidem voluptate quibusdam reprehenderit? Repellat, animi?\nLorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat qui earum ipsam unde laudantium aspernatur possimus neque eveniet doloremque officiis magni fugiat, ab magnam sit repellendus rerum? Eum, cumque voluptate.\n"
 
 /***/ }),
 
@@ -780,7 +796,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-lg fixed-top navbar-light bg-white border-bottom\">\n\n  <div class=\"container\">\n  \n\n    <!-- Brand -->\n    <a class=\"navbar-brand\" routerLink=\"/\">\n      Usajili\n    </a>\n\n    <!-- Toggler -->\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarCollapse\" aria-controls=\"navbarCollapse\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n      <span class=\"navbar-toggler-icon\"></span>\n    </button>\n\n    <!-- Collapse -->\n    <div class=\"collapse navbar-collapse\" id=\"navbarCollapse\">\n\n      <!-- Toggler -->\n      <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarCollapse\" aria-controls=\"navbarCollapse\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n        <i class=\"fe fe-x\"></i>\n      </button>\n\n      <!-- Navigation -->\n      <ul class=\"navbar-nav ml-auto\">\n\n        <li class=\"nav-item\" *ngIf=\"loggedIn\">\n          <a routerLink=\"/account\" class=\"nav-link\">Account</a>\n        </li>\n\n        <li class=\"nav-item\" *ngIf=\"loggedIn\">\n          <a href=\"#\" (click)=\"logout()\" class=\"nav-link\">Logout</a>\n        </li>\n\n        <li class=\"nav-item\" *ngIf=\"!loggedIn\">\n            <a routerLink=\"/auth/sign-in\" class=\"nav-link\">Sign In</a>\n        </li>\n\n        <li class=\"nav-item\" *ngIf=\"!loggedIn\">\n            <a routerLink=\"/auth/sign-up\" class=\"btn btn-primary nav-btn\">Sign Up</a>\n        </li>\n      \n      </ul>\n\n\n\n    </div>\n\n    </div>\n\n  \n</nav>"
+module.exports = "<nav class=\"navbar navbar-expand-lg fixed-top navbar-light bg-white border-bottom\">\n\n  <div class=\"container-fluid\">\n  \n\n    <!-- Brand -->\n    <a class=\"navbar-brand\" routerLink=\"/\">\n      Usajili\n    </a>\n\n    <!-- Toggler -->\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarCollapse\" aria-controls=\"navbarCollapse\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n      <span class=\"navbar-toggler-icon\"></span>\n    </button>\n\n    <!-- Collapse -->\n    <div class=\"collapse navbar-collapse\" id=\"navbarCollapse\">\n\n      <!-- Toggler -->\n      <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarCollapse\" aria-controls=\"navbarCollapse\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n        <i class=\"fe fe-x\"></i>\n      </button>\n\n      <form class=\"form-inline my-6 my-lg-0 ml-auto\">\n          <input class=\"form-control mr-sm-5\" style=\"min-width: 400px\" type=\"search\" placeholder=\"Search\" aria-label=\"Search\">\n        </form>\n\n      <!-- Navigation -->\n      <ul class=\"navbar-nav ml-auto\">\n        <li class=\"nav-item\" *ngIf=\"loggedIn\">\n            <a routerLink=\"/\" class=\"nav-link\">Home</a>\n          </li>\n\n          <li class=\"nav-item\" *ngIf=\"loggedIn\">\n              <a routerLink=\"/categories\" class=\"nav-link\">Categories</a>\n            </li>\n\n  \n\n        <li class=\"nav-item\" *ngIf=\"!loggedIn\">\n            <a routerLink=\"/auth/sign-in\" class=\"nav-link\">Sign In</a>\n        </li>\n\n        <li class=\"nav-item\" *ngIf=\"!loggedIn\">\n            <a routerLink=\"/auth/sign-up\" class=\"btn btn-primary nav-btn\">Sign Up</a>\n        </li>\n\n        <li class=\"nav-item\" ngbDropdown>\n            <div ngbDropdown class=\"d-inline-block\">\n                <a class=\"nav-link\" href=\"#\" id=\"dropdownBasic1\" ngbDropdownToggle>Account</a>\n                <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\n                  <a class=\"dropdown-item\" routerLink='/profile'>Profile</a>\n                  <a class=\"dropdown-item\" routerLink='/settings'>Settings</a>\n                  <a class=\"dropdown-item\" routerLink='/settings'>Enrollments</a>\n                  <div class=\"dropdown-divider\"></div>\n                  <button class=\"dropdown-item\" (click)=\"logout()\">Logout</button>\n                </div>\n              </div>\n        </li>\n\n        \n           \n      \n      </ul>\n\n\n\n    </div>\n\n    </div>\n\n  \n</nav>"
 
 /***/ }),
 
@@ -804,6 +820,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 var NavbarComponent = /** @class */ (function () {
     function NavbarComponent(auth, router, token) {
         this.auth = auth;
@@ -829,6 +846,62 @@ var NavbarComponent = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], src_app_services_token_service__WEBPACK_IMPORTED_MODULE_4__["TokenService"]])
     ], NavbarComponent);
     return NavbarComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/incs/sidebar/sidebar.component.css":
+/*!****************************************************!*\
+  !*** ./src/app/incs/sidebar/sidebar.component.css ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2luY3Mvc2lkZWJhci9zaWRlYmFyLmNvbXBvbmVudC5jc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/incs/sidebar/sidebar.component.html":
+/*!*****************************************************!*\
+  !*** ./src/app/incs/sidebar/sidebar.component.html ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<nav class=\"navbar navbar-vertical\" id=\"sidenav-main\">\n\n</nav>"
+
+/***/ }),
+
+/***/ "./src/app/incs/sidebar/sidebar.component.ts":
+/*!***************************************************!*\
+  !*** ./src/app/incs/sidebar/sidebar.component.ts ***!
+  \***************************************************/
+/*! exports provided: SidebarComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SidebarComponent", function() { return SidebarComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var SidebarComponent = /** @class */ (function () {
+    function SidebarComponent() {
+    }
+    SidebarComponent.prototype.ngOnInit = function () {
+    };
+    SidebarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-sidebar',
+            template: __webpack_require__(/*! ./sidebar.component.html */ "./src/app/incs/sidebar/sidebar.component.html"),
+            styles: [__webpack_require__(/*! ./sidebar.component.css */ "./src/app/incs/sidebar/sidebar.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], SidebarComponent);
+    return SidebarComponent;
 }());
 
 
@@ -885,6 +958,62 @@ var MainComponent = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
     ], MainComponent);
     return MainComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/profile/profile.component.css":
+/*!***********************************************!*\
+  !*** ./src/app/profile/profile.component.css ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3Byb2ZpbGUvcHJvZmlsZS5jb21wb25lbnQuY3NzIn0= */"
+
+/***/ }),
+
+/***/ "./src/app/profile/profile.component.html":
+/*!************************************************!*\
+  !*** ./src/app/profile/profile.component.html ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<app-navbar></app-navbar>\n\n\n<section class=\"py-8 py-md-11 border-bottom\">\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h2>Profile</h2>\n      </div>\n    </div>\n\n\n\n    <div class=\"row\">\n\n      <!-- profile part -->\n      <div class=\"col-md-4\">\n        <div class=\"card shadow-light-lg\">\n          <!-- Image -->\n            <img src=\"/assets/img/photos/photo-2.jpg\" alt=\"...\" class=\"card-img-top\">\n\n          <div class=\"card-body\">\n              <!-- Heading -->\n              <h3>\n                 @Userame\n              </h3>\n        \n                <!-- Text -->\n                <p class=\"text-muted mb-5\">\n                 email@gmail.com\n                </p>\n          </div>\n        </div>\n      </div>\n\n\n      <!-- the wide part -->\n\n      <div class=\"col-md-8\">\n        <div class=\"card shadow-light-lg\">\n          <div class=\"card-body\">\n              <ngb-tabset>\n                  <ngb-tab title=\"Personal\">\n                    <ng-template ngbTabContent>\n                      <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth\n                      master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh\n                      dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum\n                      iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>\n                    </ng-template>\n                  </ngb-tab>\n                  <ngb-tab>\n                    <ng-template ngbTabTitle><b>Location</b></ng-template>\n                    <ng-template ngbTabContent>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.\n                      <p>Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table\n                      craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl\n                      cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia\n                      yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean\n                      shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero\n                      sint qui sapiente accusamus tattooed echo park.</p>\n                    </ng-template>\n                  </ngb-tab>\n                  <ngb-tab title=\"Status\">\n                    <ng-template ngbTabContent>\n                      <p>Sed commodo, leo at suscipit dictum, quam est porttitor sapien, eget sodales nibh elit id diam. Nulla facilisi. Donec egestas ligula vitae odio interdum aliquet. Duis lectus turpis, luctus eget tincidunt eu, congue et odio. Duis pharetra et nisl at faucibus. Quisque luctus pulvinar arcu, et molestie lectus ultrices et. Sed diam urna, egestas ut ipsum vel, volutpat volutpat neque. Praesent fringilla tortor arcu. Vivamus faucibus nisl enim, nec tristique ipsum euismod facilisis. Morbi ut bibendum est, eu tincidunt odio. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris aliquet odio ac lorem aliquet ultricies in eget neque. Phasellus nec tortor vel tellus pulvinar feugiat.</p>\n                    </ng-template>\n                  </ngb-tab>\n                </ngb-tabset>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</section>\n\n"
+
+/***/ }),
+
+/***/ "./src/app/profile/profile.component.ts":
+/*!**********************************************!*\
+  !*** ./src/app/profile/profile.component.ts ***!
+  \**********************************************/
+/*! exports provided: ProfileComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProfileComponent", function() { return ProfileComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var ProfileComponent = /** @class */ (function () {
+    function ProfileComponent() {
+    }
+    ProfileComponent.prototype.ngOnInit = function () {
+    };
+    ProfileComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-profile',
+            template: __webpack_require__(/*! ./profile.component.html */ "./src/app/profile/profile.component.html"),
+            styles: [__webpack_require__(/*! ./profile.component.css */ "./src/app/profile/profile.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], ProfileComponent);
+    return ProfileComponent;
 }());
 
 
