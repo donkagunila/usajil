@@ -145,6 +145,56 @@ var BeforeLoginService = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/_services/opening.service.ts":
+/*!**********************************************!*\
+  !*** ./src/app/_services/opening.service.ts ***!
+  \**********************************************/
+/*! exports provided: OpeningService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OpeningService", function() { return OpeningService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _token_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./token.service */ "./src/app/_services/token.service.ts");
+
+
+
+
+var httpOptions = {
+    headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+        'Content-Type': 'application/json',
+        'Authorization': 'here',
+    })
+};
+var OpeningService = /** @class */ (function () {
+    function OpeningService(http, tokenservice) {
+        this.http = http;
+        this.tokenservice = tokenservice;
+    }
+    OpeningService.prototype.getCategories = function () {
+        // get the token
+        this.token = 'bearer ' + this.tokenservice.get();
+        // add token to http headers
+        httpOptions.headers = httpOptions.headers.set('Authorization', this.token);
+        // get data from api
+        return this.http.get('http://3.122.199.78:8001/api/categories/list', httpOptions);
+    };
+    OpeningService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"], _token_service__WEBPACK_IMPORTED_MODULE_3__["TokenService"]])
+    ], OpeningService);
+    return OpeningService;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/_services/token.service.ts":
 /*!********************************************!*\
   !*** ./src/app/_services/token.service.ts ***!
@@ -230,6 +280,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_before_login_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./_services/before-login.service */ "./src/app/_services/before-login.service.ts");
 /* harmony import */ var _services_after_login_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./_services/after-login.service */ "./src/app/_services/after-login.service.ts");
 /* harmony import */ var _profile_profile_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./profile/profile.component */ "./src/app/profile/profile.component.ts");
+/* harmony import */ var _category_category_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./category/category.component */ "./src/app/category/category.component.ts");
+
 
 
 
@@ -249,6 +301,11 @@ var routes = [
     {
         path: 'home',
         component: _home_home_component__WEBPACK_IMPORTED_MODULE_3__["HomeComponent"],
+        canActivate: [_services_after_login_service__WEBPACK_IMPORTED_MODULE_9__["AfterLoginService"]]
+    },
+    {
+        path: 'categories',
+        component: _category_category_component__WEBPACK_IMPORTED_MODULE_11__["CategoryComponent"],
         canActivate: [_services_after_login_service__WEBPACK_IMPORTED_MODULE_9__["AfterLoginService"]]
     },
     {
@@ -364,6 +421,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _main_main_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./main/main.component */ "./src/app/main/main.component.ts");
 /* harmony import */ var _profile_profile_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./profile/profile.component */ "./src/app/profile/profile.component.ts");
 /* harmony import */ var _incs_sidebar_sidebar_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./incs/sidebar/sidebar.component */ "./src/app/incs/sidebar/sidebar.component.ts");
+/* harmony import */ var _category_category_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./category/category.component */ "./src/app/category/category.component.ts");
+
 
 
 
@@ -396,7 +455,8 @@ var AppModule = /** @class */ (function () {
                 _error_error404_error404_component__WEBPACK_IMPORTED_MODULE_13__["Error404Component"],
                 _main_main_component__WEBPACK_IMPORTED_MODULE_14__["MainComponent"],
                 _profile_profile_component__WEBPACK_IMPORTED_MODULE_15__["ProfileComponent"],
-                _incs_sidebar_sidebar_component__WEBPACK_IMPORTED_MODULE_16__["SidebarComponent"]
+                _incs_sidebar_sidebar_component__WEBPACK_IMPORTED_MODULE_16__["SidebarComponent"],
+                _category_category_component__WEBPACK_IMPORTED_MODULE_17__["CategoryComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -610,6 +670,70 @@ var RegisterComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/category/category.component.css":
+/*!*************************************************!*\
+  !*** ./src/app/category/category.component.css ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".small-image{\n    /* width: 100px; */\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY2F0ZWdvcnkvY2F0ZWdvcnkuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGtCQUFrQjtBQUN0QiIsImZpbGUiOiJzcmMvYXBwL2NhdGVnb3J5L2NhdGVnb3J5LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuc21hbGwtaW1hZ2V7XG4gICAgLyogd2lkdGg6IDEwMHB4OyAqL1xufSJdfQ== */"
+
+/***/ }),
+
+/***/ "./src/app/category/category.component.html":
+/*!**************************************************!*\
+  !*** ./src/app/category/category.component.html ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<app-navbar></app-navbar>\n\n\n<section class=\"py-8 py-md-11 border-bottom\">\n  <div class=\"container\">\n    <div class=\"row justify-content-center\">\n      <div class=\"col-12 col-md-10 col-lg-8 text-center\">\n        \n        <!-- Headin -->\n        <h1 class=\"display-2\">\n          Categories\n        </h1>\n\n        <!-- Text -->\n        <p class=\"lead text-muted mb-7 mb-md-9\">\n        List of categories\n        </p>\n\n      </div>\n    </div> <!-- / .row -->\n    </div>\n  \n</section>\n\n\n<section>\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n       <div class=\"mb-5\" *ngFor=\"let category of data\">\n         <h2>\n            {{ category.title }}\n         </h2>\n         <p>\n           {{ category.description }}\n         </p>\n\n         <div class=\"row\">\n\n         <div class=\"col-12 col-md-3 d-flex\"  *ngFor=\"let opens of category.opening\">\n\n          <div class=\"card shadow-light-lg\">\n              <img src=\"{{ opens.poster }}\" alt=\"...\" class=\"card-img-top img-responsive small-image\">\n\n            <div class=\"card-body\">\n              <p>\n                {{ opens.title }}\n              </p>\n              <small>\n                {{ opens.vacancy }} Vacancies left\n              </small>\n            </div>\n          </div>\n\n\n         </div>\n\n         </div>\n\n         <a href=\"\" class=\"text-center\">\n           View all\n         </a>\n\n         <hr>\n        \n       </div>\n      </div>\n    </div>\n  </div>\n</section>\n\n\n\n\n\n<app-footer></app-footer>"
+
+/***/ }),
+
+/***/ "./src/app/category/category.component.ts":
+/*!************************************************!*\
+  !*** ./src/app/category/category.component.ts ***!
+  \************************************************/
+/*! exports provided: CategoryComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CategoryComponent", function() { return CategoryComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_opening_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../_services/opening.service */ "./src/app/_services/opening.service.ts");
+
+
+
+var CategoryComponent = /** @class */ (function () {
+    function CategoryComponent(openingSevice) {
+        this.openingSevice = openingSevice;
+    }
+    CategoryComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.openingSevice.getCategories().subscribe(function (data) {
+            _this.data = data;
+            console.table(_this.data);
+        });
+    };
+    CategoryComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-category',
+            template: __webpack_require__(/*! ./category.component.html */ "./src/app/category/category.component.html"),
+            styles: [__webpack_require__(/*! ./category.component.css */ "./src/app/category/category.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_opening_service__WEBPACK_IMPORTED_MODULE_2__["OpeningService"]])
+    ], CategoryComponent);
+    return CategoryComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/error/error404/error404.component.css":
 /*!*******************************************************!*\
   !*** ./src/app/error/error404/error404.component.css ***!
@@ -796,7 +920,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-lg fixed-top navbar-light bg-white border-bottom\">\n\n  <div class=\"container-fluid\">\n  \n\n    <!-- Brand -->\n    <a class=\"navbar-brand\" routerLink=\"/\">\n      Usajili\n    </a>\n\n    <!-- Toggler -->\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarCollapse\" aria-controls=\"navbarCollapse\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n      <span class=\"navbar-toggler-icon\"></span>\n    </button>\n\n    <!-- Collapse -->\n    <div class=\"collapse navbar-collapse\" id=\"navbarCollapse\">\n\n      <!-- Toggler -->\n      <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarCollapse\" aria-controls=\"navbarCollapse\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n        <i class=\"fe fe-x\"></i>\n      </button>\n\n      <form class=\"form-inline my-6 my-lg-0 ml-auto\">\n          <input class=\"form-control mr-sm-5\" style=\"min-width: 400px\" type=\"search\" placeholder=\"Search\" aria-label=\"Search\">\n        </form>\n\n      <!-- Navigation -->\n      <ul class=\"navbar-nav ml-auto\">\n        <li class=\"nav-item\" *ngIf=\"loggedIn\">\n            <a routerLink=\"/\" class=\"nav-link\">Home</a>\n          </li>\n\n          <li class=\"nav-item\" *ngIf=\"loggedIn\">\n              <a routerLink=\"/categories\" class=\"nav-link\">Categories</a>\n            </li>\n\n  \n\n        <li class=\"nav-item\" *ngIf=\"!loggedIn\">\n            <a routerLink=\"/auth/sign-in\" class=\"nav-link\">Sign In</a>\n        </li>\n\n        <li class=\"nav-item\" *ngIf=\"!loggedIn\">\n            <a routerLink=\"/auth/sign-up\" class=\"btn btn-primary nav-btn\">Sign Up</a>\n        </li>\n\n        <li class=\"nav-item\" ngbDropdown>\n            <div ngbDropdown class=\"d-inline-block\">\n                <a class=\"nav-link\" href=\"#\" id=\"dropdownBasic1\" ngbDropdownToggle>Account</a>\n                <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\n                  <a class=\"dropdown-item\" routerLink='/profile'>Profile</a>\n                  <a class=\"dropdown-item\" routerLink='/settings'>Settings</a>\n                  <a class=\"dropdown-item\" routerLink='/settings'>Enrollments</a>\n                  <div class=\"dropdown-divider\"></div>\n                  <button class=\"dropdown-item\" (click)=\"logout()\">Logout</button>\n                </div>\n              </div>\n        </li>\n\n        \n           \n      \n      </ul>\n\n\n\n    </div>\n\n    </div>\n\n  \n</nav>"
+module.exports = "<nav class=\"navbar navbar-expand-lg fixed-top navbar-light bg-white border-bottom\">\n\n  <div class=\"container\">\n  \n\n    <!-- Brand -->\n    <a class=\"navbar-brand\" routerLink=\"/\">\n      Usajili\n    </a>\n\n    <!-- Toggler -->\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarCollapse\" aria-controls=\"navbarCollapse\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n      <span class=\"navbar-toggler-icon\"></span>\n    </button>\n\n    <!-- Collapse -->\n    <div class=\"collapse navbar-collapse\" id=\"navbarCollapse\">\n\n      <!-- Toggler -->\n      <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarCollapse\" aria-controls=\"navbarCollapse\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n        <i class=\"fe fe-x\"></i>\n      </button>\n\n    \n      <!-- Navigation -->\n      <ul class=\"navbar-nav ml-auto\">\n        <li class=\"nav-item\" *ngIf=\"loggedIn\">\n            <a routerLink=\"/\" class=\"nav-link\">Home</a>\n          </li>\n\n          <li class=\"nav-item\" *ngIf=\"loggedIn\">\n              <a routerLink=\"/categories\" class=\"nav-link\">Categories</a>\n            </li>\n\n  \n\n        <li class=\"nav-item\" *ngIf=\"!loggedIn\">\n            <a routerLink=\"/auth/sign-in\" class=\"nav-link\">Sign In</a>\n        </li>\n\n        <li class=\"nav-item\" *ngIf=\"!loggedIn\">\n            <a routerLink=\"/auth/sign-up\" class=\"btn btn-primary nav-btn\">Sign Up</a>\n        </li>\n\n        <li class=\"nav-item\" ngbDropdown>\n            <div ngbDropdown class=\"d-inline-block\">\n                <a class=\"nav-link\" href=\"#\" id=\"dropdownBasic1\" ngbDropdownToggle>Account</a>\n                <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\n                  <a class=\"dropdown-item\" routerLink='/profile'>Profile</a>\n                  <a class=\"dropdown-item\" routerLink='/settings'>Settings</a>\n                  <a class=\"dropdown-item\" routerLink='/settings'>Enrollments</a>\n                  <div class=\"dropdown-divider\"></div>\n                  <button class=\"dropdown-item\" (click)=\"logout()\">Logout</button>\n                </div>\n              </div>\n        </li>\n\n        \n           \n      \n      </ul>\n\n\n\n    </div>\n\n    </div>\n\n  \n</nav>"
 
 /***/ }),
 
@@ -926,7 +1050,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-navbar></app-navbar>\n\n<section>\n  Main page\n</section>\n\n\n<app-footer></app-footer>"
+module.exports = "<app-navbar></app-navbar>\n\n<section class=\"pt-4 pt-md-11\">\n  <div class=\"container\">\n    <div class=\"row align-items-center\">\n      <div class=\"col-12 col-md-5 col-lg-6 order-md-2\">\n        \n        <!-- Image -->\n        <img src=\"assets/img/illustrations/illustration-2.png\" class=\"img-fluid mw-md-150 mw-lg-130 mb-6 mb-md-0\" alt=\"...\" data-aos=\"fade-up\" data-aos-delay=\"100\">\n\n      </div>\n      <div class=\"col-12 col-md-7 col-lg-6 order-md-1\" data-aos=\"fade-up\">\n        \n        <!-- Heading -->\n        <h1 class=\"display-3 text-center text-md-left\">\n          Welcome to <span class=\"text-primary\">Usajili</span>. <br>\n        </h1>\n\n        <!-- Text -->\n        <p class=\"lead text-center text-md-left text-muted mb-6 mb-lg-8\">\n          Enroll fast and with ease, enroll at the speed of your fingers\n        </p>\n            \n        <!-- Buttons -->\n        <div class=\"text-center text-md-left\">\n          <a href=\"/profile\" class=\"btn btn-primary shadow lift mr-1\">\n            Get started <i class=\"fe fe-arrow-right d-none d-md-inline ml-3\"></i>\n          </a>\n        </div>\n\n      </div>\n    </div> <!-- / .row -->\n  </div> <!-- / .container -->\n</section>\n\n<app-footer></app-footer>"
 
 /***/ }),
 
